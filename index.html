@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible"="ie=edge">
+  <title>新缘科技云电脑</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: url('https://api.imlazy.ink/img') no-repeat center center fixed;
+      background-size: cover;
+      height: 100vh;
+    }
+
+  .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+
+  .form {
+      width: 90%;
+      max-width: 400px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      color: #333;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+      display: block;
+      margin: 0 auto;
+      background: linear-gradient(to bottom, #333, #222);
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background: linear-gradient(to bottom, #555, #444);
+    }
+
+    p {
+      text-align: center;
+      color: #666;
+    }
+
+    #result {
+      color: red;
+    }
+
+    #myMenu {
+      position: absolute;
+      background: #eee;
+      list-style: none;
+      visibility: hidden;
+    }
+
+    #open-account {
+      width: 90%;
+      max-width: 600px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    #open-account h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    #open-account label {
+      display: block;
+      margin-bottom: 10px;
+      color: #333;
+      font-weight: bold;
+    }
+
+    #captcha-img {
+      max-width: 50%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    #open-account input[type="text"],
+    #open-account input[type="password"],
+    #open-account select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      box-sizing: border-box;
+    }
+
+   .drag {
+      width: 300px;
+      height: 40px;
+      line-height: 40px;
+      background-color: #e8e8e8;
+      position: relative;
+      margin: 0 auto;
+    }
+
+   .bg {
+      width: 40px;
+      height: 100%;
+      position: absolute;
+      background-color: #75CDF9;
+    }
+
+   .text {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      user-select: none;
+    }
+
+   .btn {
+      width: 40px;
+      height: 38px;
+      position: absolute;
+      border: 1px solid #ccc;
+      cursor: move;
+      font-family: "宋体";
+      text-align: center;
+      background-color: #fff;
+      user-select: none;
+      color: #666;
+    }
+
+    @media (max-width: 767px) {
+    .form {
+        max-width: 90%;
+      }
+
+      #open-account {
+        max-width: 90%;
+      }
+    }
+
+    /* 弹窗样式 */
+  .modal {
+      display: none;
+      /* 默认隐藏 */
+      position: fixed;
+      /* 固定定位 */
+      z-index: 1;
+      /* 层级在最上层 */
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      /* 如果内容过多出现滚动条 */
+      background-color: rgba(0, 0, 0, 0.4);
+      /* 半透明背景 */
+    }
+
+  .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      /* 上下居中 */
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+    }
+
+  .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+  .close:hover,
+  .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  </style>
+  <style type="text/css">
+    * {
+      user-select: auto!important;
+      -webkit-user-select: auto!important;
+    }
+  </style>
+  <input type="hidden" id="inject_idm_text_selection">
+</head>
+
+<body ondragstart="return false" oncontextmenu="return false" onselectstart="return false">
+  <div class="container">
+    <div class="form">
+      <h1>洛达计算云电脑</h1>
+      <div id="open-account">
+        <label for="username">用户名</label>
+        <input id="username" type="text">
+        <br>
+        <label for="password">密码</label>
+        <input type="password" id="password">
+        <br>
+        <div class="drag">
+          <div class="bg"></div>
+          <div class="text" onselectstart="return false">请拖动滑块解锁</div>
+          <div class="btn">&gt;&gt;</div>
+        </div>
+        <br>
+        <label for="backend">选择云电脑:</label>
+        <select id="backend">
+          <option value="1号机">1号机-IP:3389.iis7.net:10412</option>
+          <option value="2号机">测试-IP:127.0.0.1</option>
+        </select>
+        <br>
+        <button type="submit" onclick="tijiao()">创建用户</button>
+      </div>
+      <p id="result"></p>
+    </div>
+  </div>
+  <script>
+var _0x2dcd18=_0x293d;(function(_0x45c810,_0x381758){var _0x416a8d=_0x293d,_0x8207e1=_0x45c810();while(!![]){try{var _0x357830=-parseInt(_0x416a8d(0x171))/0x1*(parseInt(_0x416a8d(0x15f))/0x2)+-parseInt(_0x416a8d(0x19f))/0x3+-parseInt(_0x416a8d(0x16a))/0x4+parseInt(_0x416a8d(0x17a))/0x5+-parseInt(_0x416a8d(0x17f))/0x6*(parseInt(_0x416a8d(0x189))/0x7)+-parseInt(_0x416a8d(0x157))/0x8*(parseInt(_0x416a8d(0x168))/0x9)+parseInt(_0x416a8d(0x1a4))/0xa;if(_0x357830===_0x381758)break;else _0x8207e1['push'](_0x8207e1['shift']());}catch(_0x3acd75){_0x8207e1['push'](_0x8207e1['shift']());}}}(_0x2322,0x3bfbc));var servers={'1号机':_0x2dcd18(0x198),'2号机':_0x2dcd18(0x15a)},box=document[_0x2dcd18(0x165)](_0x2dcd18(0x199)),bg=document['querySelector'](_0x2dcd18(0x176)),text=document[_0x2dcd18(0x165)]('.text'),btn=document[_0x2dcd18(0x165)](_0x2dcd18(0x191)),success=![],distance=box[_0x2dcd18(0x18b)]-btn[_0x2dcd18(0x18b)];function _0x2322(){var _0x25233d=['.close','972936MORuRi','请先通过滑块验证码验证！','append','touchstart','removeEventListener','6475140bjkRyC','touches','touchmove','24xFLUtk','开户失败，该帐户已存在，请重新输入','style','http://127.0.0.1/api','textContent','innerHTML','contextmenu','username','97530fOGUjG','left','display','getElementById','&radic;','none','querySelector','appendChild','msg','115281tOmZsK','open','243536qQZCJx','addEventListener','send','myDiv','password','createElement','preventDefault','1HpkmeZ','color','提示:出现异常，请联系管理员','onerror','clientX','.bg','value','mousedown','onclick','579040bGQzQT','captchaSuccess','验证通过','visible','mouseup','135726fTWNoo','className','transition','result','lightgreen','提示:','0px','parse','myMenu','top','14FnDvUd','onload','offsetWidth','</span></p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p>密码:\x20<span\x20id=\x22reset-password\x22>','visibility','#fff','width','backend','.btn','验证成功！','body','left\x201s\x20ease','touchend','开户成功！','click','http://khapi.back1.idcfengye.com/api','.drag','该帐户已存在，请重新输入','backgroundColor','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22modal-content\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22close\x22>&times;</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<h2>用户创建成功</h2>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<p>用户名:\x20<span\x20id=\x22reset-username\x22>','clientY'];_0x2322=function(){return _0x25233d;};return _0x2322();}function startDrag(_0x399d56){var _0x431cde=_0x2dcd18;_0x399d56[_0x431cde(0x170)](),btn['style'][_0x431cde(0x181)]='',bg[_0x431cde(0x159)]['transition']='';let _0x53c939=_0x399d56[_0x431cde(0x175)]||_0x399d56['touches'][0x0]['clientX'];function _0x58b0ba(_0xa403ac){var _0x4d5f7f=_0x431cde;let _0x3a9e8a=_0xa403ac[_0x4d5f7f(0x175)]||_0xa403ac[_0x4d5f7f(0x1a5)][0x0]['clientX'],_0x2141ff=_0x3a9e8a-_0x53c939;if(_0x2141ff>distance)_0x2141ff=distance;else _0x2141ff<0x0&&(_0x2141ff=0x0);btn[_0x4d5f7f(0x159)][_0x4d5f7f(0x160)]=_0x2141ff+'px',bg['style'][_0x4d5f7f(0x18f)]=_0x2141ff+'px',_0x2141ff==distance&&(text[_0x4d5f7f(0x15c)]=_0x4d5f7f(0x17c),text['style'][_0x4d5f7f(0x172)]=_0x4d5f7f(0x18e),btn['innerHTML']=_0x4d5f7f(0x163),btn[_0x4d5f7f(0x159)][_0x4d5f7f(0x172)]='green',bg['style'][_0x4d5f7f(0x19b)]=_0x4d5f7f(0x183),success=!![],_0x410ac1(),setTimeout(function(){var _0x12f66d=_0x4d5f7f;alert(_0x12f66d(0x192));},0x64));}function _0x23d389(){var _0x5140aa=_0x431cde;!success&&(btn[_0x5140aa(0x159)][_0x5140aa(0x160)]=0x0,bg[_0x5140aa(0x159)][_0x5140aa(0x18f)]=0x0,btn['style'][_0x5140aa(0x181)]=_0x5140aa(0x194),bg[_0x5140aa(0x159)][_0x5140aa(0x181)]='width\x201s\x20ease'),_0x410ac1();}function _0x410ac1(){var _0x46dd50=_0x431cde;document[_0x46dd50(0x1a3)]('mousemove',_0x58b0ba),document[_0x46dd50(0x1a3)](_0x46dd50(0x17e),_0x23d389),document[_0x46dd50(0x1a3)](_0x46dd50(0x1a6),_0x58b0ba),document[_0x46dd50(0x1a3)](_0x46dd50(0x195),_0x23d389);}document['addEventListener']('mousemove',_0x58b0ba),document['addEventListener'](_0x431cde(0x17e),_0x23d389),document['addEventListener'](_0x431cde(0x1a6),_0x58b0ba),document[_0x431cde(0x16b)](_0x431cde(0x195),_0x23d389);}btn['addEventListener'](_0x2dcd18(0x178),startDrag),btn['addEventListener'](_0x2dcd18(0x1a2),startDrag);function _0x293d(_0x2874fc,_0x4f2cc7){var _0x2322d0=_0x2322();return _0x293d=function(_0x293d86,_0x10aa2b){_0x293d86=_0x293d86-0x157;var _0x1449a1=_0x2322d0[_0x293d86];return _0x1449a1;},_0x293d(_0x2874fc,_0x4f2cc7);}function tijiao(){var _0x412d51=_0x2dcd18;if(!success){alert(_0x412d51(0x1a0));return;}var _0x265fc5=new FormData();_0x265fc5[_0x412d51(0x1a1)](_0x412d51(0x15e),document['getElementById'](_0x412d51(0x15e))[_0x412d51(0x177)]),_0x265fc5[_0x412d51(0x1a1)](_0x412d51(0x16e),document[_0x412d51(0x162)](_0x412d51(0x16e))[_0x412d51(0x177)]),_0x265fc5[_0x412d51(0x1a1)](_0x412d51(0x190),document[_0x412d51(0x162)](_0x412d51(0x190))[_0x412d51(0x177)]),_0x265fc5[_0x412d51(0x1a1)](_0x412d51(0x17b),success);var _0x283bf9=new XMLHttpRequest();_0x283bf9[_0x412d51(0x169)]('POST',servers[document['getElementById'](_0x412d51(0x190))[_0x412d51(0x177)]]),_0x283bf9[_0x412d51(0x18a)]=function(){var _0xe3fbdc=_0x412d51,_0x477e15=JSON[_0xe3fbdc(0x186)](_0x283bf9['responseText']);document['getElementById'](_0xe3fbdc(0x182))[_0xe3fbdc(0x15b)]=_0xe3fbdc(0x184)+_0x477e15[_0xe3fbdc(0x167)];if(_0x477e15[_0xe3fbdc(0x167)]===_0xe3fbdc(0x196)){var _0x1344a4=document[_0xe3fbdc(0x16f)]('div');_0x1344a4[_0xe3fbdc(0x180)]='modal',_0x1344a4['innerHTML']=_0xe3fbdc(0x19c)+document['getElementById']('username')[_0xe3fbdc(0x177)]+_0xe3fbdc(0x18c)+document[_0xe3fbdc(0x162)](_0xe3fbdc(0x16e))[_0xe3fbdc(0x177)]+'</span></p>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20',document[_0xe3fbdc(0x193)][_0xe3fbdc(0x166)](_0x1344a4);var _0x4bb889=_0x1344a4[_0xe3fbdc(0x165)](_0xe3fbdc(0x19e));_0x4bb889[_0xe3fbdc(0x179)]=function(){var _0x4aee28=_0xe3fbdc;_0x1344a4[_0x4aee28(0x159)][_0x4aee28(0x161)]=_0x4aee28(0x164);};}else _0x477e15[_0xe3fbdc(0x167)]===_0xe3fbdc(0x158)&&alert(_0xe3fbdc(0x19a));},_0x283bf9[_0x412d51(0x174)]=function(){var _0x4b78fc=_0x412d51;document[_0x4b78fc(0x162)]('result')[_0x4b78fc(0x15b)]=_0x4b78fc(0x173);},_0x283bf9[_0x412d51(0x16c)](_0x265fc5);}document[_0x2dcd18(0x162)](_0x2dcd18(0x16d))['addEventListener'](_0x2dcd18(0x15d),function(_0x1399cd){var _0x4f4be5=_0x2dcd18;_0x1399cd[_0x4f4be5(0x170)]();var _0xbe9e1f=document['getElementById'](_0x4f4be5(0x187));_0xbe9e1f[_0x4f4be5(0x159)][_0x4f4be5(0x160)]=_0x1399cd[_0x4f4be5(0x175)]+'px',_0xbe9e1f['style'][_0x4f4be5(0x188)]=_0x1399cd[_0x4f4be5(0x19d)]+'px',_0xbe9e1f[_0x4f4be5(0x159)][_0x4f4be5(0x18d)]=_0x4f4be5(0x17d);},![]),document['addEventListener'](_0x2dcd18(0x197),function(){var _0x2fcbaf=_0x2dcd18,_0x6d84b6=document[_0x2fcbaf(0x162)](_0x2fcbaf(0x187));_0x6d84b6[_0x2fcbaf(0x159)][_0x2fcbaf(0x160)]='0px',_0x6d84b6[_0x2fcbaf(0x159)][_0x2fcbaf(0x188)]=_0x2fcbaf(0x185),_0x6d84b6[_0x2fcbaf(0x159)][_0x2fcbaf(0x18d)]='hidden';},![]);
+</script>
+</body>
+
+</html>
